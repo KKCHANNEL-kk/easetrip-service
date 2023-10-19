@@ -1,0 +1,32 @@
+{
+    "dateRange": ["2022-01-01", "2022-01-02"],
+    "points": ["1", "2", "3", "4"],
+    "conditions": {
+      "preferredTransportation": "subway",
+      "maxWalkingDistance": 1000,
+      "startPoint": {
+        "pid": "100",
+        "address": "北京市东城区某酒店",
+        "name": "某酒店",
+        "latLng": {
+          "latitude": 39.908100,
+          "longitude": 116.397100
+        },
+        "mapid": "101010",
+        "iconurl": "https://example.com/icon_hotel.png",
+        "tag": ["hotel"],
+        "city": "北京",
+        "introduction": "某酒店位于北京市东城区，交通便利，设施齐全。"
+      },
+      "dailyStartTime": "09:00",
+      "dailyEndTime": "18:00",
+      "lunchTime": "12:00-13:00",
+      "dinnerTime": "18:00-19:00",
+      "timePerPoint": {
+        "1": 2,
+        "2": 4,
+        "3": 3,
+        "4": 2
+      }
+    }
+  }

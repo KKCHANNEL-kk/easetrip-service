@@ -1,0 +1,184 @@
+{
+    "name": "北京2日旅行",
+    "dateRange": ["2022-01-01", "2022-01-02"],
+    "days": [
+      {
+        "day": "2022-01-01",
+        "blocks": [
+          {
+            "type": "point",
+            "point": {
+              "pid": "1",
+              "address": "天安门广场",
+              "name": "天安门",
+              "latLng": {
+                "latitude": 39.908692,
+                "longitude": 116.397477
+              },
+              "mapid": "123456",
+              "iconurl": "https://example.com/icon_tiananmen.png",
+              "tag": ["city", "history"],
+              "city": "北京",
+              "introduction": "天安门广场是中国的象征，拥有丰富的历史和文化价值。"
+            },
+            "start": "2022-01-01T09:00:00",
+            "end": "2022-01-01T11:00:00"
+          },
+          {
+            "type": "route",
+            "route": {
+              "origin": {
+                "pid": "1",
+                "address": "天安门广场",
+                "name": "天安门",
+                "latLng": {
+                  "latitude": 39.908692,
+                  "longitude": 116.397477
+                },
+                "mapid": "123456",
+                "iconurl": "https://example.com/icon_tiananmen.png",
+                "tag": ["city", "history"],
+                "city": "北京",
+                "introduction": "天安门广场是中国的象征，拥有丰富的历史和文化价值。"
+              },
+              "destination": {
+                "pid": "2",
+                "address": "故宫博物院",
+                "name": "故宫",
+                "latLng": {
+                  "latitude": 39.916344,
+                  "longitude": 116.397155
+                },
+                "mapid": "234567",
+                "iconurl": "https://example.com/icon_forbidden_city.png",
+                "tag": ["city", "history"],
+                "city": "北京",
+                "introduction": "故宫是中国古代皇家宫殿，拥有世界上最丰富的古代木质结构建筑群。"
+              },
+              "steps": [
+                {
+                  "start": "天安门",
+                  "end": "故宫",
+                  "step": "步行500米",
+                  "duration": 600,
+                  "distance": 500
+                }
+              ],
+              "duration": 600,
+              "distance": 500
+            },
+            "start": "2022-01-01T11:00:00",
+            "end": "2022-01-01T11:10:00"
+          },
+          {
+            "type": "point",
+            "point": {
+              "pid": "2",
+              "address": "故宫博物院",
+              "name": "故宫",
+              "latLng": {
+                "latitude": 39.916344,
+                "longitude": 116.397155
+              },
+              "mapid": "234567",
+              "iconurl": "https://example.com/icon_forbidden_city.png",
+              "tag": ["city", "history"],
+              "city": "北京",
+              "introduction": "故宫是中国古代皇家宫殿，拥有世界上最丰富的古代木质结构建筑群。"
+            },
+            "start": "2022-01-01T11:10:00",
+            "end": "2022-01-01T17:00:00"
+          }
+        ]
+      },
+      {
+        "day": "2022-01-02",
+        "blocks": [
+          {
+            "type": "point",
+            "point": {
+              "pid": "3",
+              "address": "颐和园",
+              "name": "颐和园",
+              "latLng": {
+                "latitude": 39.999662,
+                "longitude": 116.274796
+              },
+              "mapid": "345678",
+              "iconurl": "https://example.com/icon_summer_palace.png",
+              "tag": ["nature", "history"],
+              "city": "北京",
+              "introduction": "颐和园是中国著名的皇家园林，以湖光山色为特点，充满自然美。"
+            },
+            "start": "2022-01-02T09:00:00",
+            "end": "2022-01-02T12:00:00"
+          },
+          {
+            "type": "route",
+            "route": {
+              "origin": {
+                "pid": "3",
+                "address": "颐和园",
+                "name": "颐和园",
+                "latLng": {
+                  "latitude": 39.999662,
+                  "longitude": 116.274796
+                },
+                "mapid": "345678",
+                "iconurl": "https://example.com/icon_summer_palace.png",
+                "tag": ["nature", "history"],
+                "city": "北京",
+                "introduction": "颐和园是中国著名的皇家园林，以湖光山色为特点，充满自然美。"
+              },
+              "destination": {
+                "pid": "4",
+                "address": "北京奥林匹克公园",
+                "name": "奥林匹克公园",
+                "latLng": {
+                  "latitude": 40.002207,
+                  "longitude": 116.397128
+                },
+                "mapid": "456789",
+                "iconurl": "https://example.com/icon_olympic_park.png",
+                "tag": ["city", "sports"],
+                "city": "北京",
+                "introduction": "奥林匹克公园是2008年北京奥运会的主要场馆，现在是市民休闲的好去处。"
+              },
+              "steps": [
+                {
+                  "start": "颐和园",
+                  "end": "奥林匹克公园",
+                  "step": "地铁10号线乘坐5站",
+                  "duration": 3600,
+                  "distance": 20000
+                }
+              ],
+              "duration": 3600,
+              "distance": 20000
+            },
+            "start": "2022-01-02T12:00:00",
+            "end": "2022-01-02T13:00:00"
+          },
+          {
+            "type": "point",
+            "point": {
+              "pid": "4",
+              "address": "北京奥林匹克公园",
+              "name": "奥林匹克公园",
+              "latLng": {
+                "latitude": 40.002207,
+                "longitude": 116.397128
+              },
+              "mapid": "456789",
+              "iconurl": "https://example.com/icon_olympic_park.png",
+              "tag": ["city", "sports"],
+              "city": "北京",
+              "introduction": "奥林匹克公园是2008年北京奥运会的主要场馆，现在是市民休闲的好去处。"
+            },
+            "start": "2022-01-02T13:00:00",
+            "end": "2022-01-02T17:00:00"
+          }
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,670 @@
+{
+    "routes": [
+      {
+        "legs": [
+          {
+            "distanceMeters": 6049,
+            "duration": "1616s",
+            "staticDuration": "1616s",
+            "polyline": {
+              "encodedPolyline": "{}igCuclxT@\\aCD]J{Av@YFM@F\\Vb@\\ZrAZb@Dr@EdE}@JPRFUVuDpABVIPCDEEQ@YNe@j@o@lAk@~AQbAMpAIrA\\dANBPJFTd@Vj@`@nAV|E{@rKkCdBk@|CsA`Bm@lDyAjEsAb@QdA}@pFcFhBsBfB}BX[l@]bD}AlEmBRMRY^u@l@a@l@a@fA{AnAaAZg@`@uA`@g@d@]d@i@pB_BhAk@\\KX?DSNKJCRFNLF\\@Pb@?p@Mx@IxAF|@Dl@Cd@M`@c@Ve@b@kAV]n@[zAe@l@Yr@q@x@y@`@U\\GhAB`BVZJXL~@ZELRb@P\\@NiCxDw@YU?]j@^X^Z~D_GAYJSPKT?RLFR?LZ^NVrExEhDvC~DrF~@bAhBtAXDd@LZ?jBMZBvCw@nBo@r@Yh@c@jCiCn@e@l@[rCy@dA_@d@fAd@~@Nz@AVKPEDQ?uAU?B?BWEEtAEL"
+            },
+            "startLocation": {
+              "latLng": {
+                "latitude": 22.3383847,
+                "longitude": 114.2637909
+              }
+            },
+            "endLocation": {
+              "latLng": {
+                "latitude": 22.3075089,
+                "longitude": 114.266776
+              }
+            },
+            "steps": [
+              {
+                "distanceMeters": 20,
+                "staticDuration": "26s",
+                "polyline": {
+                  "encodedPolyline": "{}igCuclxT@\\"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.3383847,
+                    "longitude": 114.2637909
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.3383707,
+                    "longitude": 114.26363669999999
+                  }
+                },
+                "navigationInstruction": {
+                  "maneuver": "DEPART",
+                  "instructions": "向西前行"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "20 米"
+                  },
+                  "staticDuration": {
+                    "text": "1分钟"
+                  }
+                },
+                "travelMode": "WALK"
+              },
+              {
+                "distanceMeters": 168,
+                "staticDuration": "174s",
+                "polyline": {
+                  "encodedPolyline": "y}igCwblxTaCD]J{Av@YFM@"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.3383707,
+                    "longitude": 114.26363669999999
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.3398346,
+                    "longitude": 114.26321709999999
+                  }
+                },
+                "navigationInstruction": {
+                  "maneuver": "TURN_RIGHT",
+                  "instructions": "向右转"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "0.2 公里"
+                  },
+                  "staticDuration": {
+                    "text": "3分钟"
+                  }
+                },
+                "travelMode": "WALK"
+              },
+              {
+                "distanceMeters": 267,
+                "staticDuration": "305s",
+                "polyline": {
+                  "encodedPolyline": "}fjgCc`lxTF\\Vb@\\ZrAZb@Dr@EdE}@"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.3398346,
+                    "longitude": 114.26321709999999
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.3376691,
+                    "longitude": 114.26292199999999
+                  }
+                },
+                "navigationInstruction": {
+                  "maneuver": "TURN_LEFT",
+                  "instructions": "向左转"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "0.3 公里"
+                  },
+                  "staticDuration": {
+                    "text": "5分钟"
+                  }
+                },
+                "travelMode": "WALK"
+              },
+              {
+                "distanceMeters": 154,
+                "staticDuration": "128s",
+                "polyline": {
+                  "encodedPolyline": "myigCg~kxTJPRFUVuDpA"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.3376691,
+                    "longitude": 114.26292199999999
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.3385276,
+                    "longitude": 114.2622562
+                  }
+                },
+                "navigationInstruction": {
+                  "maneuver": "ROUNDABOUT_LEFT",
+                  "instructions": "从环岛的2出口上大學道"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "0.2 公里"
+                  },
+                  "staticDuration": {
+                    "text": "2分钟"
+                  }
+                },
+                "travelMode": "WALK"
+              },
+              {
+                "distanceMeters": 26,
+                "staticDuration": "20s",
+                "polyline": {
+                  "encodedPolyline": "y~igCczkxTBVIPCD"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.3385276,
+                    "longitude": 114.2622562
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.338582600000002,
+                    "longitude": 114.2620245
+                  }
+                },
+                "navigationInstruction": {
+                  "maneuver": "TURN_LEFT",
+                  "instructions": "向左转\n目的地在左侧"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "26 米"
+                  },
+                  "staticDuration": {
+                    "text": "1分钟"
+                  }
+                },
+                "travelMode": "WALK"
+              },
+              {
+                "distanceMeters": 3351,
+                "staticDuration": "300s",
+                "polyline": {
+                  "encodedPolyline": "c_jgCsxkxTEEQ@YNe@j@o@lAk@~AQbAMpAIrA\\dANBPJFTd@Vj@`@nAV|E{@rKkCdBk@|CsA`Bm@lDyAjEsAb@QdA}@pFcFhBsBfB}BX[l@]bD}AlEmBRMRY^u@l@a@l@a@fA{AnAaAZg@`@uA`@g@d@]d@i@pB_BhAk@\\KX?DSNKJCRFNLF\\@Pb@?p@Mx@IxAF|@Dl@Cd@M`@c@Ve@b@kAV]n@[zAe@l@Yr@q@x@y@`@U\\GhAB`BVZJXL~@Z"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.33858,
+                    "longitude": 114.26201999999999
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.31691,
+                    "longitude": 114.27071
+                  }
+                },
+                "navigationInstruction": {
+                  "instructions": "公交车 开往將軍澳站"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "3.4 公里"
+                  },
+                  "staticDuration": {
+                    "text": "5分钟"
+                  }
+                },
+                "transitDetails": {
+                  "stopDetails": {
+                    "arrivalStop": {
+                      "name": "半见村; 坑口道",
+                      "location": {
+                        "latLng": {
+                          "latitude": 22.31691,
+                          "longitude": 114.27071
+                        }
+                      }
+                    },
+                    "arrivalTime": "2023-11-02T15:37:54Z",
+                    "departureStop": {
+                      "name": "香港科技大学; 大学道",
+                      "location": {
+                        "latLng": {
+                          "latitude": 22.33858,
+                          "longitude": 114.26201999999999
+                        }
+                      }
+                    },
+                    "departureTime": "2023-11-02T15:32:54Z"
+                  },
+                  "localizedValues": {
+                    "arrivalTime": {
+                      "time": {
+                        "text": "23:37"
+                      },
+                      "timeZone": "Asia/Hong_Kong"
+                    },
+                    "departureTime": {
+                      "time": {
+                        "text": "23:32"
+                      },
+                      "timeZone": "Asia/Hong_Kong"
+                    }
+                  },
+                  "headsign": "將軍澳站",
+                  "transitLine": {
+                    "agencies": [
+                      {
+                        "name": "城巴",
+                        "phoneNumber": "+852 2136 8888",
+                        "uri": "https://www.bravobus.com.hk/"
+                      }
+                    ],
+                    "name": "將軍澳站 - 西貢",
+                    "color": "#f2f200",
+                    "nameShort": "792M",
+                    "textColor": "#1f4b7d",
+                    "vehicle": {
+                      "name": {
+                        "text": "公交车"
+                      },
+                      "type": "BUS",
+                      "iconUri": "//maps.gstatic.com/mapfiles/transit/iw2/6/bus2.png"
+                    }
+                  },
+                  "stopCount": 5
+                },
+                "travelMode": "TRANSIT"
+              },
+              {
+                "distanceMeters": 43,
+                "staticDuration": "34s",
+                "polyline": {
+                  "encodedPolyline": "{wegConmxTRb@P\\"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.3169442,
+                    "longitude": 114.27063799999999
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.3167471,
+                    "longitude": 114.2703119
+                  }
+                },
+                "navigationInstruction": {
+                  "maneuver": "DEPART",
+                  "instructions": "从“坑口道”向西南前行"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "43 米"
+                  },
+                  "staticDuration": {
+                    "text": "1分钟"
+                  }
+                },
+                "travelMode": "WALK"
+              },
+              {
+                "distanceMeters": 134,
+                "staticDuration": "112s",
+                "polyline": {
+                  "encodedPolyline": "uvegCmlmxT@NiCxD"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.3167471,
+                    "longitude": 114.2703119
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.3174302,
+                    "longitude": 114.2693017
+                  }
+                },
+                "navigationInstruction": {
+                  "maneuver": "ROUNDABOUT_LEFT",
+                  "instructions": "从环岛的1出口上寶寧路"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "0.1 公里"
+                  },
+                  "staticDuration": {
+                    "text": "2分钟"
+                  }
+                },
+                "travelMode": "WALK"
+              },
+              {
+                "distanceMeters": 79,
+                "staticDuration": "65s",
+                "polyline": {
+                  "encodedPolyline": "}zegCcfmxTw@YU?]j@"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.3174302,
+                    "longitude": 114.2693017
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.3179749,
+                    "longitude": 114.26921069999999
+                  }
+                },
+                "navigationInstruction": {
+                  "maneuver": "TURN_RIGHT",
+                  "instructions": "向右转，进入坑口（北）公共運輸交匯處\n目的地在左侧"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "79 米"
+                  },
+                  "staticDuration": {
+                    "text": "1分钟"
+                  }
+                },
+                "travelMode": "WALK"
+              },
+              {
+                "distanceMeters": 1735,
+                "staticDuration": "180s",
+                "polyline": {
+                  "encodedPolyline": "i}egCwdmxT^Z~D_GAYJSPKT?RLFR?LZ^NVrExEhDvC~DrF~@bAhBtAXDd@LZ?jBMZBvCw@nBo@r@Yh@c@jCiCn@e@l@[rCy@dA_@d@fAd@~@Nz@AVKPEDQ?uAU?B"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.317809,
+                    "longitude": 114.269082
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.307333,
+                    "longitude": 114.26726900000001
+                  }
+                },
+                "navigationInstruction": {
+                  "instructions": "小巴 开往清水灣半島"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "1.7 公里"
+                  },
+                  "staticDuration": {
+                    "text": "3分钟"
+                  }
+                },
+                "transitDetails": {
+                  "stopDetails": {
+                    "arrivalStop": {
+                      "name": "清水湾半岛",
+                      "location": {
+                        "latLng": {
+                          "latitude": 22.307333,
+                          "longitude": 114.26726900000001
+                        }
+                      }
+                    },
+                    "arrivalTime": "2023-11-02T15:48:00Z",
+                    "departureStop": {
+                      "name": "坑口巴士总站",
+                      "location": {
+                        "latLng": {
+                          "latitude": 22.317809,
+                          "longitude": 114.269082
+                        }
+                      }
+                    },
+                    "departureTime": "2023-11-02T15:45:00Z"
+                  },
+                  "localizedValues": {
+                    "arrivalTime": {
+                      "time": {
+                        "text": "23:48"
+                      },
+                      "timeZone": "Asia/Hong_Kong"
+                    },
+                    "departureTime": {
+                      "time": {
+                        "text": "23:45"
+                      },
+                      "timeZone": "Asia/Hong_Kong"
+                    }
+                  },
+                  "headsign": "清水灣半島",
+                  "transitLine": {
+                    "agencies": [
+                      {
+                        "name": "Green Minibus",
+                        "uri": "https://www.td.gov.hk/tc/transport_in_hong_kong/public_transport/minibuses/index.html"
+                      }
+                    ],
+                    "name": "清水灣半島 - 坑口站",
+                    "color": "#42c2a6",
+                    "nameShort": "109M",
+                    "textColor": "#ffffff",
+                    "vehicle": {
+                      "name": {
+                        "text": "小巴"
+                      },
+                      "type": "BUS",
+                      "iconUri": "//maps.gstatic.com/mapfiles/transit/iw2/6/bus2.png"
+                    }
+                  },
+                  "stopCount": 3
+                },
+                "travelMode": "TRANSIT"
+              },
+              {
+                "distanceMeters": 18,
+                "staticDuration": "13s",
+                "polyline": {
+                  "encodedPolyline": "y{cgCiylxTWE"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.3073297,
+                    "longitude": 114.26725139999999
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.307454800000002,
+                    "longitude": 114.26728059999999
+                  }
+                },
+                "navigationInstruction": {
+                  "maneuver": "DEPART",
+                  "instructions": "从“蓬萊路”向北前行"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "18 米"
+                  },
+                  "staticDuration": {
+                    "text": "1分钟"
+                  }
+                },
+                "travelMode": "WALK"
+              },
+              {
+                "distanceMeters": 52,
+                "staticDuration": "41s",
+                "polyline": {
+                  "encodedPolyline": "q|cgCoylxTEtAEL"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.307454800000002,
+                    "longitude": 114.26728059999999
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.307513099999998,
+                    "longitude": 114.2667773
+                  }
+                },
+                "navigationInstruction": {
+                  "maneuver": "TURN_LEFT",
+                  "instructions": "向左转"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "52 米"
+                  },
+                  "staticDuration": {
+                    "text": "1分钟"
+                  }
+                },
+                "travelMode": "WALK"
+              },
+              {
+                "distanceMeters": 2,
+                "staticDuration": "3s",
+                "polyline": {
+                  "encodedPolyline": "}|cgCkvlxT"
+                },
+                "startLocation": {
+                  "latLng": {
+                    "latitude": 22.307513099999998,
+                    "longitude": 114.2667773
+                  }
+                },
+                "endLocation": {
+                  "latLng": {
+                    "latitude": 22.3075089,
+                    "longitude": 114.266776
+                  }
+                },
+                "navigationInstruction": {
+                  "maneuver": "TURN_LEFT",
+                  "instructions": "向左转"
+                },
+                "localizedValues": {
+                  "distance": {
+                    "text": "2 米"
+                  },
+                  "staticDuration": {
+                    "text": "1分钟"
+                  }
+                },
+                "travelMode": "WALK"
+              }
+            ],
+            "localizedValues": {
+              "distance": {
+                "text": "6.0 公里"
+              },
+              "duration": {
+                "text": "27分钟"
+              },
+              "staticDuration": {
+                "text": "27分钟"
+              }
+            },
+            "stepsOverview": {
+              "multiModalSegments": [
+                {
+                  "stepStartIndex": 0,
+                  "stepEndIndex": 4,
+                  "navigationInstruction": {
+                    "instructions": "步行前往香港科技大学; 大学道"
+                  },
+                  "travelMode": "WALK"
+                },
+                {
+                  "stepStartIndex": 5,
+                  "stepEndIndex": 5,
+                  "navigationInstruction": {
+                    "instructions": "公交车 开往將軍澳站"
+                  },
+                  "travelMode": "TRANSIT"
+                },
+                {
+                  "stepStartIndex": 6,
+                  "stepEndIndex": 8,
+                  "navigationInstruction": {
+                    "instructions": "步行前往坑口巴士总站"
+                  },
+                  "travelMode": "WALK"
+                },
+                {
+                  "stepStartIndex": 9,
+                  "stepEndIndex": 9,
+                  "navigationInstruction": {
+                    "instructions": "小巴 开往清水灣半島"
+                  },
+                  "travelMode": "TRANSIT"
+                },
+                {
+                  "stepStartIndex": 10,
+                  "stepEndIndex": 12,
+                  "travelMode": "WALK"
+                }
+              ]
+            }
+          }
+        ],
+        "distanceMeters": 6049,
+        "duration": "1626s",
+        "staticDuration": "1626s",
+        "polyline": {
+          "encodedPolyline": "{}igCuclxT@\\aCD]J{Av@YFM@F\\Vb@\\ZrAZb@Dr@EdE}@JPRFUVuDpABVIPCDEEQ@YNe@j@o@lAk@~AQbAMpAIrA\\dANBPJFTd@Vj@`@nAV|E{@rKkCdBk@|CsA`Bm@lDyAjEsAb@QdA}@pFcFhBsBfB}BX[l@]bD}AlEmBRMRY^u@l@a@l@a@fA{AnAaAZg@`@uA`@g@d@]d@i@pB_BhAk@\\KX?DSNKJCRFNLF\\@Pb@?p@Mx@IxAF|@Dl@Cd@M`@c@Ve@b@kAV]n@[zAe@l@Yr@q@x@y@`@U\\GhAB`BVZJXL~@ZELRb@P\\@NiCxDw@YU?]j@^X^Z~D_GAYJSPKT?RLFR?LZ^NVrExEhDvC~DrF~@bAhBtAXDd@LZ?jBMZBvCw@nBo@r@Yh@c@jCiCn@e@l@[rCy@dA_@d@fAd@~@Nz@AVKPEDQ?uAU?B?BWEEtAEL"
+        },
+        "viewport": {
+          "low": {
+            "latitude": 22.3067109,
+            "longitude": 114.25875219999999
+          },
+          "high": {
+            "latitude": 22.3398346,
+            "longitude": 114.27111989999999
+          }
+        },
+        "travelAdvisory": {
+          "transitFare": {}
+        },
+        "localizedValues": {
+          "distance": {
+            "text": "6.0 公里"
+          },
+          "duration": {
+            "text": "27分钟"
+          },
+          "staticDuration": {
+            "text": "27分钟"
+          },
+          "transitFare": {}
+        },
+        "routeLabels": [
+          "DEFAULT_ROUTE"
+        ]
+      }
+    ],
+    "geocodingResults": {
+      "origin": {
+        "geocoderStatus": {},
+        "type": [
+          "establishment",
+          "library",
+          "point_of_interest"
+        ],
+        "partialMatch": true,
+        "placeId": "ChIJn9cMo2oEBDQRQCnmWm1I_kI"
+      },
+      "destination": {
+        "geocoderStatus": {},
+        "type": [
+          "establishment",
+          "point_of_interest"
+        ],
+        "partialMatch": true,
+        "placeId": "ChIJ36G7so0DBDQRoHQvAmsz564"
+      }
+    }
+  }

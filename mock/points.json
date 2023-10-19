@@ -1,0 +1,54 @@
+[
+    {
+        "pid": "1",
+        "name": "Summer Palace",
+        "address": "19 Xinjiangongmen Rd, Haidian District, Beijing, China",
+        "latLng": {
+            "latitude": 39.9997,
+            "longitude": 116.2749
+        },
+        "mapid": "101010",
+        "iconurl": ["https://example.com/icon_summer_palace.png"],
+        "tag": [
+            "palace",
+            "garden"
+        ],
+        "city": "Beijing",
+        "introduction": "The Summer Palace is a royal garden in Beijing, China. It is one of the best-preserved imperial gardens in the world and is listed as a UNESCO World Heritage Site. It is mainly dominated by Longevity Hill and the Kunming Lake, covering an area of 2.9 square kilometers. The palace was used by the royal family as a summer residence and a place to entertain guests."
+    },
+    {
+        "pid": "2",
+        "name": "Sanlitun",
+        "address": "Sanlitun, Chaoyang District, Beijing, China",
+        "latLng": {
+            "latitude": 39.9367,
+            "longitude": 116.4554
+        },
+        "mapid": "101011",
+        "iconurl": ["https://example.com/icon_sanlitun.png"],
+        "tag": [
+            "shopping",
+            "dining",
+            "nightlife"
+        ],
+        "city": "Beijing",
+        "introduction": "Sanlitun is a popular shopping and entertainment area in Beijing, China. It is known for its trendy shops, bars, restaurants, and nightclubs. The area is particularly popular with young people and foreigners. It is located in the Chaoyang District and is easily accessible by public transportation."
+    },
+    {
+        "pid": "3",
+        "name": "Olympic Forest Park",
+        "address": "Olympic Green, Chaoyang District, Beijing, China",
+        "latLng": {
+            "latitude": 40.0002,
+            "longitude": 116.3933
+        },
+        "mapid": "101012",
+        "iconurl": ["https://example.com/icon_olympic_forest_park.png"],
+        "tag": [
+            "park",
+            "outdoor activities"
+        ],
+        "city": "Beijing",
+        "introduction": "The Olympic Forest Park is a large park in Beijing, China. It was built for the 2008 Summer Olympics and covers an area of 680 hectares. The park is known for its beautiful scenery and is a popular destination for outdoor activities such as hiking, cycling, and boating. It is located in the Chaoyang District and is easily accessible by public transportation."
+    }
+]

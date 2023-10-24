@@ -2,5 +2,19 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.autopep8"
     },
-    "python.formatting.provider": "none"
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "easetrip.cbtughbdhwbo.ap-east-1.rds.amazonaws.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "easetrip",
+            "database": "easetrip",
+            "username": "admin"
+        }
+    ]
 }

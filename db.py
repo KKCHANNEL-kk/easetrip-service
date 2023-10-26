@@ -1,8 +1,9 @@
 import os
 from abc import ABC, abstractmethod
-from pymongo import MongoClient
+from typing import Generator
 from sqlalchemy.orm import sessionmaker, Session
-import aioredis
+from pymongo.mongo_client import MongoClient
+from pymongo.database import Database as MongoDatabase
 
 
 class DB(ABC):
@@ -18,11 +19,19 @@ class Mongo(DB):
     uri = f"mongodb+srv://{user}:{password}@{host}/?retryWrites=true&w=majority"
     database = "easetrip"
 
-    def get_connection(self) -> MongoClient:
-        from pymongo.mongo_client import MongoClient
-        client = MongoClient(self.uri)[self.database]
-        return client
+    def get_connection(self) -> MongoDatabase:
+        client: MongoClient = MongoClient(Mongo.uri)
+        db: MongoDatabase = client[Mongo.database]
 
+        return db
+
+    def __repr__(self) -> str:
+        res = f"MongoDB: \n\
+        host: {self.host}\n\
+        database: {self.database}\n\
+        uri: {self.uri}"
+        return res
+        
 
 class AMZRDS(DB):
     host = os.getenv("AMZRDS_HOST")
@@ -33,16 +42,10 @@ class AMZRDS(DB):
     uri = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}"
 
     def __init__(self) -> None:
-        self.host = os.getenv("AMZRDS_HOST")
-        self.user = os.getenv("AMZRDS_USER")
-        self.password = os.getenv("AMZRDS_PASSWORD")
-        self.database = "easetrip"
-        self.port = 3306
-        self.uri = f"mysql+pymysql://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}"
         connect_args = {"connect_timeout": 60}
         try:
             from sqlalchemy import create_engine
-            self.engine = create_engine(self.uri,
+            self.engine = create_engine(AMZRDS.uri,
                                         pool_size=20,
                                         pool_recycle=3600,
                                         pool_timeout=15,
@@ -51,11 +54,18 @@ class AMZRDS(DB):
         except Exception as e:
             print("Error connecting to MySQL DB:", e)
 
-    def get_connection(self) -> Session:
+    def get_connection(self) -> Generator[Session,None,None]:
         SessionLocal = sessionmaker(
-                autocommit=False, autoflush=False, bind=self.engine)
-        conn = SessionLocal()
+            autocommit=False, autoflush=False, bind=self.engine)
+        conn: Session = SessionLocal()
         try:
             yield conn
         finally:
             conn.close()
+
+    def __repr__(self) -> str:
+        res = f"AMZRDS: \n\
+        host: {self.host}\n\
+        database: {self.database}\n\
+        uri: {self.uri}"
+        return res

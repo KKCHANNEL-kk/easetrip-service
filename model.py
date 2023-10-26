@@ -1,8 +1,11 @@
+from abc import abstractmethod
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime, Text, JSON, Date, Boolean, Double
 from werkzeug.security import generate_password_hash, check_password_hash
 from db import AMZRDS, Mongo
+# import schema
+# from pydantic import BaseModel as BaseType
 
 Base = declarative_base()  # <-元类
 
@@ -12,8 +15,17 @@ Base = declarative_base()  # <-元类
 class ModelBase(Base):
     __abstract__ = True
 
+    @abstractmethod
     def create(self):
         pass
+
+    # def __init__(self, data: BaseType):
+    #     data_type = schema[__name__]
+    #     for key in data_type.__fields__:
+    #         if key in data:
+    #             setattr(self, key, data[key])
+    #         else:
+    #             setattr(self, key, None)
 
 
 class Test(ModelBase):
@@ -21,7 +33,7 @@ class Test(ModelBase):
     id = Column(Integer, primary_key=True, autoincrement=True)
     val = Column(String(255), nullable=True)
 
-    def __init__(self, val):
+    def __init__(self, val: str):
         self.val = val
 
 
@@ -80,8 +92,8 @@ class User(ModelBase):
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
+    def check_password(self, password: str):
+        return check_password_hash(str(self.password_hash), password)
 
     def create(self):
         conn = next(AMZRDS().get_connection())

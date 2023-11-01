@@ -8,7 +8,7 @@
             "longitude": 116.2749
         },
         "mapid": "101010",
-        "iconurl": ["https://example.com/icon_summer_palace.png"],
+        "pic": ["https://example.com/icon_summer_palace.png"],
         "tag": [
             "palace",
             "garden"
@@ -25,7 +25,7 @@
             "longitude": 116.4554
         },
         "mapid": "101011",
-        "iconurl": ["https://example.com/icon_sanlitun.png"],
+        "pic": ["https://example.com/icon_sanlitun.png"],
         "tag": [
             "shopping",
             "dining",
@@ -43,7 +43,7 @@
             "longitude": 116.3933
         },
         "mapid": "101012",
-        "iconurl": ["https://example.com/icon_olympic_forest_park.png"],
+        "pic": ["https://example.com/icon_olympic_forest_park.png"],
         "tag": [
             "park",
             "outdoor activities"

@@ -1,13 +1,12 @@
 from abc import abstractmethod
 from datetime import datetime
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, DateTime, Text, JSON, Date, Boolean, Double
+from sqlalchemy.ext.declarative import declarative_base,DeclarativeMeta
+from sqlalchemy import Column, Integer, String, DateTime, Text, JSON, Date, Boolean, Numeric
 from werkzeug.security import generate_password_hash, check_password_hash
 from db import AMZRDS, Mongo
-# import schema
-# from pydantic import BaseModel as BaseType
+from pydantic import BaseModel as BaseType
 
-Base = declarative_base()  # <-元类
+Base: DeclarativeMeta = declarative_base()  # <-元类
 
 # 用来加载抽象方法的基类
 
@@ -15,17 +14,38 @@ Base = declarative_base()  # <-元类
 class ModelBase(Base):
     __abstract__ = True
 
-    @abstractmethod
-    def create(self):
-        pass
+    def create(self, db_type: str = 'mysql'):
+        if db_type == 'mysql':
+            conn = next(AMZRDS().get_connection())
+            conn.add(self)
+            try:
+                conn.commit()
+            except Exception as e:
+                # Rollback the changes
+                conn.rollback()
+                print(e)
+                # Re-raise the exception
+                return e
 
-    # def __init__(self, data: BaseType):
-    #     data_type = schema[__name__]
-    #     for key in data_type.__fields__:
-    #         if key in data:
-    #             setattr(self, key, data[key])
-    #         else:
-    #             setattr(self, key, None)
+    # 解 dict 为 model
+    def __init__(self, *args, **kwargs):
+        if args:
+            data = args[0]
+            if isinstance(data, dict):
+                for key in data.keys():
+                    setattr(self, key, data[key])
+            else:
+                for column in data.__table__.columns:
+                    setattr(self, column.name, getattr(data, column.name))
+        else:
+            for key in kwargs.keys():
+                setattr(self, key, kwargs[key])
+
+    def __repr__(self) -> str:
+        res: str = self.__tablename__ + ":\n"
+        for column in self.__table__.columns:
+            res += f"{column.name}: {getattr(self, column.name)}\n"
+        return res
 
 
 class Test(ModelBase):
@@ -65,14 +85,14 @@ class Point(ModelBase):
     __tablename__ = 'point'
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(255), nullable=False)
-    longitude = Column(Double, nullable=False)
-    latitude = Column(Double, nullable=False)
+    longitude = Column(Numeric, nullable=False)
+    latitude = Column(Numeric, nullable=False)
     address = Column(String(255), nullable=False)
     mapid = Column(String(255))
     city = Column(String(255))
     introduction = Column(Text)
 
-    options = Column(JSON)  # iconurl, tag 塞这
+    options = Column(JSON)  # pic, tag 塞这
     create_time = Column(DateTime, nullable=False, default=datetime.now())
     update_time = Column(DateTime, nullable=False, default=datetime.now())
 

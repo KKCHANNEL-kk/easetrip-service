@@ -13,7 +13,7 @@
           "longitude": 116.397100
         },
         "mapid": "101010",
-        "iconurl": "https://example.com/icon_hotel.png",
+        "pic": "https://example.com/icon_hotel.png",
         "tag": ["hotel"],
         "city": "北京",
         "introduction": "某酒店位于北京市东城区，交通便利，设施齐全。"

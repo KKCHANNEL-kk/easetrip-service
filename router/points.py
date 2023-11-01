@@ -1,12 +1,92 @@
+from fastapi import HTTPException
 from fastapi import APIRouter, Query, Body
+from typing import Any, List
+from schema import PointInput, PointOutput, LatLng
+from model import Point as PointModel
+from db import AMZRDS, Mongo
+from typing_extensions import Annotated
 
 router = APIRouter(
     prefix="/points")
 
-@router.get("/")
-def search_points():
-    return {}
+conn = next(AMZRDS().get_connection())
+
+
+ALLOWED_CITIES = ['Shanghai', 'Beijing', 'Guangzhou']
+ALLOWED_TAGS = ['food', 'hotel', 'attraction']
+
+
+@router.get("/",
+            summary="Search for points of interest based on city and/or tag.",
+            description="Search for points of interest based on city and/or tag.",
+            response_description="List of points of interest matching the search criteria.",
+            response_model=List[PointOutput]
+            )
+def search_points(limit: Annotated[int, 'The maximum number of points to return.'] = 10,
+                  offset: Annotated[int, 'The number of points to skip.'] = 0,
+                  city: Annotated[List[str], 'A list of cities to filter by.'] = Query([
+                  ]),
+                  tag: Annotated[List[str], 'A list of tags to filter by.'] = Query([])) -> List[PointOutput]:
+    city = [c for c in city if c]
+    tag = [t for t in tag if t]
+    if not all(c in ALLOWED_CITIES for c in city):
+        raise HTTPException(status_code=400, detail="Invalid city option")
+    if not all(t in ALLOWED_TAGS for t in tag):
+        raise HTTPException(status_code=400, detail="Invalid tag option")
+
+    if city and tag:
+        points: List[PointModel] = conn.query(PointModel).filter(
+            PointModel.city.in_(city), PointModel.options['tag'].in_(tag)
+        ).limit(limit).offset(offset).all()
+    elif city:
+        points: List[PointModel] = conn.query(PointModel).filter(
+            PointModel.city.in_(city)
+        ).limit(limit).offset(offset).all()
+    elif tag:
+        points: List[PointModel] = conn.query(PointModel).filter(
+            PointModel.options['tag'].in_(tag)
+        ).limit(limit).offset(offset).all()
+    else:
+        points: List[PointModel] = conn.query(
+            PointModel).limit(limit).offset(offset).all()
+
+    ret: list[PointOutput] = [PointOutput.from_orm(p) for p in points]
+
+    return ret
+
 
 @router.get("/{p_id}")
-def get_point_by_id(p_id:int):
-    return {}
+def get_point_by_id(p_id: int):
+    """
+    Retrieve a point by ID.
+
+    Args:
+        p_id (int): The ID of the point to retrieve.
+
+    Returns:
+        PointModel: The point with the specified ID.
+    """
+    point: PointModel = conn.query(PointModel).filter(
+        PointModel.id == p_id).first()
+
+    return point
+
+
+@router.post("/")
+def save_points(points: List[PointInput] = Body({})):
+    """
+    Save a list of points to the database.
+
+    Args:
+        points (List[PointInput]): A list of PointInput objects containing information about each point.
+
+    Returns:
+        None
+    """
+    for point in points:
+        point.options['pic'] = point.pic
+        point.options['tag'] = point.tag
+
+        m_p = PointModel(name=point.name, longitude=point.latLng.longitude, latitude=point.latLng.latitude, address=point.address, mapid=point.mapid,
+                         city=point.city, introduction=point.introduction, options=point.options)
+        m_p.create()

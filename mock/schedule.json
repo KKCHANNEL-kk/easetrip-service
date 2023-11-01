@@ -16,7 +16,7 @@
                 "longitude": 116.397477
               },
               "mapid": "123456",
-              "iconurl": "https://example.com/icon_tiananmen.png",
+              "pic": "https://example.com/icon_tiananmen.png",
               "tag": ["city", "history"],
               "city": "北京",
               "introduction": "天安门广场是中国的象征，拥有丰富的历史和文化价值。"
@@ -36,7 +36,7 @@
                   "longitude": 116.397477
                 },
                 "mapid": "123456",
-                "iconurl": "https://example.com/icon_tiananmen.png",
+                "pic": "https://example.com/icon_tiananmen.png",
                 "tag": ["city", "history"],
                 "city": "北京",
                 "introduction": "天安门广场是中国的象征，拥有丰富的历史和文化价值。"
@@ -50,7 +50,7 @@
                   "longitude": 116.397155
                 },
                 "mapid": "234567",
-                "iconurl": "https://example.com/icon_forbidden_city.png",
+                "pic": "https://example.com/icon_forbidden_city.png",
                 "tag": ["city", "history"],
                 "city": "北京",
                 "introduction": "故宫是中国古代皇家宫殿，拥有世界上最丰富的古代木质结构建筑群。"
@@ -81,7 +81,7 @@
                 "longitude": 116.397155
               },
               "mapid": "234567",
-              "iconurl": "https://example.com/icon_forbidden_city.png",
+              "pic": "https://example.com/icon_forbidden_city.png",
               "tag": ["city", "history"],
               "city": "北京",
               "introduction": "故宫是中国古代皇家宫殿，拥有世界上最丰富的古代木质结构建筑群。"
@@ -105,7 +105,7 @@
                 "longitude": 116.274796
               },
               "mapid": "345678",
-              "iconurl": "https://example.com/icon_summer_palace.png",
+              "pic": "https://example.com/icon_summer_palace.png",
               "tag": ["nature", "history"],
               "city": "北京",
               "introduction": "颐和园是中国著名的皇家园林，以湖光山色为特点，充满自然美。"
@@ -125,7 +125,7 @@
                   "longitude": 116.274796
                 },
                 "mapid": "345678",
-                "iconurl": "https://example.com/icon_summer_palace.png",
+                "pic": "https://example.com/icon_summer_palace.png",
                 "tag": ["nature", "history"],
                 "city": "北京",
                 "introduction": "颐和园是中国著名的皇家园林，以湖光山色为特点，充满自然美。"
@@ -139,7 +139,7 @@
                   "longitude": 116.397128
                 },
                 "mapid": "456789",
-                "iconurl": "https://example.com/icon_olympic_park.png",
+                "pic": "https://example.com/icon_olympic_park.png",
                 "tag": ["city", "sports"],
                 "city": "北京",
                 "introduction": "奥林匹克公园是2008年北京奥运会的主要场馆，现在是市民休闲的好去处。"
@@ -170,7 +170,7 @@
                 "longitude": 116.397128
               },
               "mapid": "456789",
-              "iconurl": "https://example.com/icon_olympic_park.png",
+              "pic": "https://example.com/icon_olympic_park.png",
               "tag": ["city", "sports"],
               "city": "北京",
               "introduction": "奥林匹克公园是2008年北京奥运会的主要场馆，现在是市民休闲的好去处。"

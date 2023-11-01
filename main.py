@@ -1,14 +1,20 @@
 from fastapi import FastAPI
 from dotenv import load_dotenv
+load_dotenv()
+
 import uvicorn
 from db import Mongo, AMZRDS
 import model
-from router import schedules, test,points
-load_dotenv()
+from router import schedules, test, points
+print("Service Init: Loading .env")
+print(
+    f'Mongo:{Mongo().uri}\nAMZRDS:{AMZRDS().uri}\n')
+
 app = FastAPI()
 app.include_router(test.router)
 app.include_router(schedules.router)
 app.include_router(points.router)
+
 
 @app.get("/")
 def index():
@@ -23,7 +29,7 @@ def test_script():
     # test_model = model.Test(test)
 
     # test_model.create()
-    
+
     pass
 
 

@@ -5,8 +5,6 @@ from model import Point
 router = APIRouter(
     prefix="/schedules")
 
-
-
 GLOBAL_SCHEDULE_CACHE:list[dict[int,Any]] = [
     
 ]

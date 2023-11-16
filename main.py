@@ -1,12 +1,14 @@
 from fastapi import FastAPI
 from dotenv import load_dotenv
 load_dotenv()
+print("Service Init: Loading .env")
 
 import uvicorn
 from db import Mongo, AMZRDS
 import model
 from router import schedules, test, points
-print("Service Init: Loading .env")
+from fastapi.middleware.cors import CORSMiddleware
+
 print(
     f'Mongo:{Mongo().uri}\nAMZRDS:{AMZRDS().uri}\n')
 
@@ -14,7 +16,8 @@ app = FastAPI()
 app.include_router(test.router)
 app.include_router(schedules.router)
 app.include_router(points.router)
-
+origins = ["*"]
+app.add_middleware(CORSMiddleware, allow_origins=origins)
 
 @app.get("/")
 def index():

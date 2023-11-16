@@ -69,8 +69,8 @@ class ScheduleBlock(BaseModel):
     type: str = Field(..., description="point or route")
     point: Optional[Point]
     route: Optional[Route]
-    start_time: datetime
-    end_time: datetime
+    start: datetime
+    end: datetime
     activity: Optional[str]
 
     @validator("type")

@@ -1,32 +1,101 @@
 {
-    "dateRange": ["2022-01-01", "2022-01-02"],
-    "points": ["1", "2", "3", "4"],
-    "conditions": {
-      "preferredTransportation": "subway",
-      "maxWalkingDistance": 1000,
-      "startPoint": {
-        "pid": "100",
-        "address": "北京市东城区某酒店",
-        "name": "某酒店",
-        "latLng": {
-          "latitude": 39.908100,
-          "longitude": 116.397100
-        },
-        "mapid": "101010",
-        "pic": "https://example.com/icon_hotel.png",
-        "tag": ["hotel"],
-        "city": "北京",
-        "introduction": "某酒店位于北京市东城区，交通便利，设施齐全。"
-      },
-      "dailyStartTime": "09:00",
-      "dailyEndTime": "18:00",
-      "lunchTime": "12:00-13:00",
-      "dinnerTime": "18:00-19:00",
-      "timePerPoint": {
-        "1": 2,
-        "2": 4,
-        "3": 3,
-        "4": 2
+  "start": "2023-07-01",
+  "end": "2023-07-02",
+  "points": [
+    {
+      "name": "Ocean Park",
+      "address": "Aberdeen, Hong Kong",
+      "latLng": {
+        "lat": 22.246661,
+        "lng": 114.175724
+      }
+    },
+    {
+      "name": "Peak Tram",
+      "address": "33 Garden Road, Central, Hong Kong",
+      "latLng": {
+        "lat": 22.277766,
+        "lng": 114.159930
+      }
+    },
+    {
+      "name": "Mong Kok",
+      "address": "Mong Kok, Kowloon, Hong Kong",
+      "latLng": {
+        "lat": 22.319684,
+        "lng": 114.169629
       }
     }
-  }
+  ]
+},
+
+{
+  "start": "2023-07-01",
+  "end": "2023-07-04",
+  "points": [
+    {
+      "name": "Star Ferry",
+      "address": "Star Ferry Pier, Tsim Sha Tsui, Tsim Sha Tsui Promenade, Hong Kong",
+      "latLng": {
+        "lat": 22.293764,
+        "lng": 114.168463
+      }
+    },
+    {
+      "name": "Victoria Harbour",
+      "address": "Tsim Sha Tsui Promenade, Kowloon, Hong Kong",
+      "latLng": {
+        "lat": 22.293528,
+        "lng": 114.171007
+      }
+    },
+    {
+      "name": "Lantau Island",
+      "address": "Lantau Island, New Territories, Hong Kong",
+      "latLng": {
+        "lat": 22.266498,
+        "lng": 113.941751
+      }
+    },
+    {
+      "name": "Ocean Park",
+      "address": "Aberdeen, Hong Kong",
+      "latLng": {
+        "lat": 22.246661,
+        "lng": 114.175724
+      }
+    },
+    {
+      "name": "Peak Tram",
+      "address": "33 Garden Road, Central, Hong Kong",
+      "latLng": {
+        "lat": 22.277766,
+        "lng": 114.159930
+      }
+    },
+    {
+      "name": "Mong Kok",
+      "address": "Mong Kok, Kowloon, Hong Kong",
+      "latLng": {
+        "lat": 22.319684,
+        "lng": 114.169629
+      }
+    },
+    {
+      "name": "Lunch Restaurant",
+      "address": "123 Delicious Street, Hong Kong",
+      "latLng": {
+        "lat": 22.300000,
+        "lng": 114.160000
+      }
+    },
+    {
+      "name": "Dinner Restaurant",
+      "address": "456 Tasty Avenue, Hong Kong",
+      "latLng": {
+        "lat": 22.310000,
+        "lng": 114.170000
+      }
+    }
+  ]
+}

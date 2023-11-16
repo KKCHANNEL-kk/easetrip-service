@@ -69,7 +69,7 @@ def get_point_by_id(p_id: int):
     point: PointModel = conn.query(PointModel).filter(
         PointModel.id == p_id).first()
 
-    return point
+    return PointOutput.from_orm(point)
 
 
 @router.post("/")

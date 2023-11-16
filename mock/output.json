@@ -1,0 +1,138 @@
+{
+    "start": "2023-07-01",
+    "end": "2023-07-04",
+    "days": [
+        {
+            "day": "2023-07-01",
+            "blocks": [
+                {
+                    "type": "point",
+                    "point": "Star Ferry",
+                    "start": "10:00",
+                    "end": "11:00",
+                    "activity": "Take a ride on the Star Ferry and enjoy the view of Victoria Harbour"
+                },
+                {
+                    "type": "route",
+                    "route": {
+                        "origin": "Star Ferry",
+                        "destination": "Victoria Harbour",
+                        "steps": [
+                            {
+                                "start": "Star Ferry",
+                                "end": "Victoria Harbour",
+                                "step": "350 metres on foot",
+                                "distance": 350,
+                                "duration": 300
+                            }
+                        ],
+                        "duration": 300,
+                        "distance": 350
+                    },
+                    "start": "11:00",
+                    "end": "11:05",
+                    "activity": "Walk to Victoria Harbour"
+                },
+                {
+                    "type": "point",
+                    "point": "Victoria Harbour",
+                    "start": "11:05",
+                    "end": "13:00",
+                    "activity": "Explore Victoria Harbour and enjoy the skyline view"
+                },
+                {
+                    "type": "point",
+                    "point": "Lunch Restaurant",
+                    "start": "13:00",
+                    "end": "14:00",
+                    "activity": "Enjoy lunch at a nearby restaurant"
+                },
+                {
+                    "type": "route",
+                    "route": {
+                        "origin": "Victoria Harbour",
+                        "destination": "Peak Tram",
+                        "steps": [
+                            {
+                                "start": "Victoria Harbour",
+                                "end": "Peak Tram",
+                                "step": "Bus 15C, 5 stops",
+                                "distance": 1000,
+                                "duration": 600
+                            }
+                        ],
+                        "duration": 600,
+                        "distance": 1000
+                    },
+                    "start": "14:00",
+                    "end": "14:15",
+                    "activity": "Take a bus to Peak Tram"
+                },
+                {
+                    "type": "point",
+                    "point": "Peak Tram",
+                    "start": "14:15",
+                    "end": "16:00",
+                    "activity": "Visit the Peak Tram and enjoy the panoramic view of Hong Kong"
+                },
+                {
+                    "type": "point",
+                    "point": "Dinner Restaurant",
+                    "start": "16:00",
+                    "end": "17:00",
+                    "activity": "Enjoy dinner at a nearby restaurant"
+                }
+            ]
+        },
+        {
+            "day": "2023-07-02",
+            "blocks": [
+                {
+                    "type": "point",
+                    "point": "Lantau Island",
+                    "start": "10:00",
+                    "end": "17:00",
+                    "activity": "Spend the day exploring Lantau Island, visit the Big Buddha and Po Lin Monastery"
+                }
+            ]
+        },
+        {
+            "day": "2023-07-03",
+            "blocks": [
+                {
+                    "type": "point",
+                    "point": "Ocean Park",
+                    "start": "10:00",
+                    "end": "17:00",
+                    "activity": "Spend the day at Ocean Park and enjoy the various attractions"
+                }
+            ]
+        },
+        {
+            "day": "2023-07-04",
+            "blocks": [
+                {
+                    "type": "point",
+                    "point": "Mong Kok",
+                    "start": "10:00",
+                    "end": "12:00",
+                    "activity": "Explore the vibrant streets of Mong Kok and visit local markets"
+                },
+                {
+                    "type": "point",
+                    "point": "Lunch Restaurant",
+                    "start": "12:00",
+                    "end": "13:00",
+                    "activity": "Enjoy lunch at a nearby restaurant"
+                },
+                {
+                    "type": "point",
+                    "point": "Dinner Restaurant",
+                    "start": "18:00",
+                    "end": "19:00",
+                    "activity": "Enjoy dinner at a nearby restaurant"
+                }
+            ]
+        }
+    ]
+}

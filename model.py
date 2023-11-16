@@ -85,8 +85,8 @@ class Point(ModelBase):
     __tablename__ = 'point'
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(255), nullable=False)
-    longitude = Column(Numeric, nullable=False)
-    latitude = Column(Numeric, nullable=False)
+    longitude = Column(Numeric(10,7), nullable=False)
+    latitude = Column(Numeric(10,7), nullable=False)
     address = Column(String(255), nullable=False)
     mapid = Column(String(255))
     city = Column(String(255))

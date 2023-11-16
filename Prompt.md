@@ -1,31 +1,5 @@
-from openai.types.chat.completion_create_params import ResponseFormat
-from openai.types.chat.chat_completion_message_param import ChatCompletionMessageParam
-from openai.types.chat import ChatCompletion
-from typing import Any
-from fastapi import APIRouter, HTTPException, Query, Body
-from model import Point
-from typing import Any, List
-from schema import PointInput, PointOutput, LatLng
-from model import Point as PointModel
-from db import AMZRDS, Mongo
-from datetime import date
-import json
+# Create New Schedule Draft
 
-import openai
-import os
-openai.api_type = "azure"
-openai.azure_endpoint = "https://hkust.azure-api.net"
-openai.api_version = "2023-07-01-preview"
-openai.api_key = os.environ.get("AZURE_API_KEY")
-
-router = APIRouter(
-    prefix="/schedules")
-
-GLOBAL_SCHEDULE_CACHE: list[dict[int, Any]] = [
-
-]
-conn = next(AMZRDS().get_connection())
-sys_prompt = '''
 You are a trip assistant. Here are some places I want to go, please help me generate a trip schedule in JSON file.
 
 ## Data Models
@@ -48,7 +22,7 @@ You are a trip assistant. Here are some places I want to go, please help me gene
 
 - origin (str): The starting point's name of the route
 - destination (str): The ending point of the route
-- steps (list[RouteStep]): An array of RouteStep objects representing each step in the route
+- steps (list\[RouteStep\]): An array of RouteStep objects representing each step in the route
 - duration (int): The total time in seconds
 - distance (int): The total distance in kilometers
 
@@ -64,19 +38,17 @@ You are a trip assistant. Here are some places I want to go, please help me gene
 **ScheduleDay** : a single day in the trip schedule
 
 - day (date): The date in the schedule (e.g. 2023/07/01)
-- blocks (list[ScheduleBlock]): An array of ScheduleBlock objects representing the activities for the day
+- blocks (list\[ScheduleBlock\]): An array of ScheduleBlock objects representing the activities for the day
 
 **Schedule** : the entire trip schedule
 
 - start (date): The start date of the trip in YYYY/MM/DD format
 - end (date): The end date of the trip
-- days (list[ScheduleDay]): An array of ScheduleDay objects representing each day of the trip
+- days (list\[ScheduleDay\]): An array of ScheduleDay objects representing each day of the trip
 
-'''
-few_shots: list[ChatCompletionMessageParam] = [
-    {'role': 'user',
-     'content':
-     '''
+## Input example
+
+```json
 {
   "start": "2023/07/01",
   "end": "2023/07/02",
@@ -107,10 +79,11 @@ few_shots: list[ChatCompletionMessageParam] = [
     }
   ]
 }
-'''}, {
-         'role': 'assistant',
-         'content':
-        '''
+```
+
+## Output example
+
+```json
 {
     "start": "2023/07/01",
     "end": "2023/07/02",
@@ -169,84 +142,5 @@ few_shots: list[ChatCompletionMessageParam] = [
         }
     ]
 }
-'''
-    }
-]
 
-
-@router.post("/start")
-# TODO: uid放 session 里获取
-def start_new_schedule_draft(
-    uid: int = 1,
-    pids: list[int] = Body(...),
-    options: dict[str, Any] = Body({}),
-    start: date = Body(...),
-    end: date = Body(...)
-):
-    # 根据 pid，获取 points
-    points: list[Point] = conn.query(Point).filter(Point.id.in_(pids)).all()
-    if not points:
-        raise HTTPException(status_code=400, detail="Invalid point id")
-
-    slim_points = []
-    for point in points:
-        slim_points.append({
-            "id": point.id,
-            "name": point.name,
-            "latLng": {
-                "lat": float(point.latitude),
-                "lng": float(point.longitude)
-            },
-            "address": point.address})
-
-    input = json.dumps({
-        'start': str(start),
-        'end': str(end),
-        'points': slim_points,
-    })
-
-    resp: ChatCompletion = openai.chat.completions.create(
-        model='gpt-35-turbo',
-        messages=[
-            {
-                'role': 'system',
-                'content': sys_prompt,
-            },
-            few_shots[0],
-            few_shots[1],
-            {
-                'role': 'user',
-                'content': input,
-            }
-        ],  # type: ignore
-        n=1,
-        temperature=0,
-        top_p=1,
-        response_format={'type':'text'},
-    )
-    choice = resp.choices[0]
-    content: str = choice.message.content or ""
-
-    print(content)
-    return json.loads(content)
-
-
-@router.get("/refine")
-def refine():
-    return {}
-
-
-@router.post("/")
-def create_schedule(uid: int = 1):
-
-    return {}
-
-
-@router.delete("/delete")
-def delete_schedule_by_id(id: str):
-    return {}
-
-
-@router.put("/update")
-def update_schedule_by_id(id: str):
-    return {}
+```

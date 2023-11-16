@@ -24,7 +24,6 @@ router = APIRouter(
 GLOBAL_SCHEDULE_CACHE: list[dict[int, Any]] = [
 
 ]
-conn = next(AMZRDS().get_connection())
 sys_prompt = '''
 You are a trip assistant. Here are some places I want to go, please help me generate a trip schedule in JSON file.
 
@@ -183,6 +182,8 @@ def start_new_schedule_draft(
     start: date = Body(...),
     end: date = Body(...)
 ):
+    conn = next(AMZRDS().get_connection())
+
     # 根据 pid，获取 points
     points: list[Point] = conn.query(Point).filter(Point.id.in_(pids)).all()
     if not points:
@@ -222,7 +223,7 @@ def start_new_schedule_draft(
         n=1,
         temperature=0,
         top_p=1,
-        response_format={'type':'text'},
+        response_format={'type': 'text'},
     )
     choice = resp.choices[0]
     content: str = choice.message.content or ""

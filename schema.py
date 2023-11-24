@@ -1,7 +1,8 @@
-from datetime import datetime, date
+from datetime import time, date
 from pydantic import BaseModel, Field, validator, HttpUrl
-from typing import Any, List, Dict, Set, Optional
+from typing import Any, List, Dict, Set, Optional, Union
 from model import Point as PointModel
+
 
 class Test(BaseModel):
     id: int
@@ -13,12 +14,14 @@ class LatLng(BaseModel):
     longitude: float
 
 # TODO: HttpUrl转换为 str 入库的问题
+
+
 class Point(BaseModel):
     id: int
     name: str
     latLng: LatLng
     address: str
-    mapid: Optional[str]
+    mapid: Optional[str] = None
     pic: Optional[List[str]] = []
     # TODO: List 转 Set 的问题
     tag: List[str] = []
@@ -35,7 +38,8 @@ class PointInput(Point):
 class PointOutput(Point):
     @classmethod
     def from_orm(cls, point: PointModel):
-        latLng = LatLng(latitude=point.latitude, longitude=point.longitude) # type: ignore
+        latLng = LatLng(latitude=point.latitude,
+                        longitude=point.longitude)  # type: ignore
         data = point.__dict__
         data['latLng'] = latLng
         del data['latitude']
@@ -55,8 +59,8 @@ class RouteStep(BaseModel):
 
 
 class Route(BaseModel):
-    origin: Point
-    destination: Point
+    origin: Union[Point, str]
+    destination: Union[Point, str]
     steps: List[RouteStep]
     duration: int  # 单位秒
     distance: int  # 单位米
@@ -67,10 +71,10 @@ ScheduleBlockType = ("point", "route")
 
 class ScheduleBlock(BaseModel):
     type: str = Field(..., description="point or route")
-    point: Optional[Point]
-    route: Optional[Route]
-    start: datetime
-    end: datetime
+    point: Optional[Union[Point, str]] = None
+    route: Optional[Route] = None
+    start: time
+    end: time
     activity: Optional[str]
 
     @validator("type")
@@ -91,7 +95,25 @@ class ScheduleDay(BaseModel):
 class Schedule(BaseModel):
     id: str
     name: str
-    start_date: date
-    end_date: date
+    start: date
+    end: date
     days: List[ScheduleDay]
-    options: Optional[Dict[Any, Any]]
+    options: Optional[Dict[Any, Any]] = {}
+
+
+class ScheduleRefineAction(BaseModel):
+    op: str  # add, delete, update
+    day_index: int
+    block_index: int
+
+
+class ScheduleRefineActionAdd(ScheduleRefineAction):
+    block: ScheduleBlock
+
+
+class ScheduleRefineActionDelete(ScheduleRefineAction):
+    pass
+
+
+class ScheduleRefineActionUpdate(ScheduleRefineAction):
+    block: ScheduleBlock

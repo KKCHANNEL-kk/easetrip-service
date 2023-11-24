@@ -13,7 +13,14 @@ conn = next(AMZRDS().get_connection())
 
 
 ALLOWED_CITIES = ['Shanghai', 'Beijing', 'Guangzhou']
-ALLOWED_TAGS = ['food', 'hotel', 'attraction']
+ALLOWED_TAGS = ['seasonal_limited',
+                'delicious_food',
+                'historical_sites',
+                'citywalk',
+                'playgrounds',
+                'cultural_expriences',
+                'events_shows',
+                ]
 
 
 @router.get("/",
@@ -29,10 +36,10 @@ def search_points(limit: Annotated[int, 'The maximum number of points to return.
                   tag: Annotated[List[str], 'A list of tags to filter by.'] = Query([])) -> List[PointOutput]:
     city = [c for c in city if c]
     tag = [t for t in tag if t]
-    if not all(c in ALLOWED_CITIES for c in city):
-        raise HTTPException(status_code=400, detail="Invalid city option")
-    if not all(t in ALLOWED_TAGS for t in tag):
-        raise HTTPException(status_code=400, detail="Invalid tag option")
+    # if not all(c in ALLOWED_CITIES for c in city):
+    #     raise HTTPException(status_code=400, detail="Invalid city option")
+    # if not all(t in ALLOWED_TAGS for t in tag):
+    #     raise HTTPException(status_code=400, detail="Invalid tag option")
 
     if city and tag:
         points: List[PointModel] = conn.query(PointModel).filter(

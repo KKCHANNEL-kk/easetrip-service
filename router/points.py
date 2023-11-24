@@ -27,6 +27,8 @@ ALLOWED_TAGS = ['seasonal_limited',
                 ]
 GOOGLEMAPID_CITY = {
     'ChIJuSwU55ZS8DURiqkPryBWYrk': 'Beijing',
+    'ChIJMzz1sUBwsjURoWTDI5QSlQI': 'Shanghai',
+    'ChIJD5gyo-3iAzQRfMnq27qzivA': 'Hong Kong'
 }
 
 

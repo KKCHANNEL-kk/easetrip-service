@@ -42,6 +42,8 @@ class PointOutput(Point):
                         longitude=point.longitude)  # type: ignore
         data = point.__dict__
         data['latLng'] = latLng
+        data['tag'] = data['options']['tag']
+        data['pic'] = data['options']['pic']
         del data['latitude']
         del data['longitude']
         return cls(**data)

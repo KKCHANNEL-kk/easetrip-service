@@ -25,6 +25,9 @@ ALLOWED_TAGS = ['seasonal_limited',
                 'cultural_expriences',
                 'events_shows',
                 ]
+GOOGLEMAPID_CITY = {
+    'ChIJuSwU55ZS8DURiqkPryBWYrk': 'Beijing',
+}
 
 
 @router.get("/",
@@ -37,21 +40,18 @@ def search_points(limit: Annotated[int, 'The maximum number of points to return.
                   offset: Annotated[int, 'The number of points to skip.'] = 0,
                   city: str = Query(None),
                   tag: str = Query(None)
-                  #   city: Annotated[List[str], 'A list of cities to filter by.'] = Query([]),
-                  #   tag: Annotated[List[str], 'A list of tags to filter by.'] = Query([])
                   ) -> List[PointOutput]:
-    # city = [c for c in city if c]
-    # tag = [t for t in tag if t]
-    # if not all(c in ALLOWED_CITIES for c in city):
-    #     raise HTTPException(status_code=400, detail="Invalid city option")
-    # if not all(t in ALLOWED_TAGS for t in tag):
-    #     raise HTTPException(status_code=400, detail="Invalid tag option")
+    # 兼容 Google Map ID 传值场景
+    if city in GOOGLEMAPID_CITY:
+        city = GOOGLEMAPID_CITY[city]
+
     query = conn.query(PointModel)
     if city:
         query = query.filter(PointModel.city == city)
     if tag:
         tag_json = json.dumps([tag])  # Convert the tag to a JSON array
-        query = query.filter(text("JSON_CONTAINS(options->'$.tag', :tag)")).params(tag=tag_json)
+        query = query.filter(
+            text("JSON_CONTAINS(options->'$.tag', :tag)")).params(tag=tag_json)
 
     points: List[PointModel] = query.limit(limit).offset(offset).all()
 

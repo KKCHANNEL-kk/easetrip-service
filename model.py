@@ -72,8 +72,8 @@ class Schedule(ModelBase):
     is_deleted = Column(Integer, nullable=False, default=0)
     is_finished = Column(Integer, nullable=False, default=0)
 
-    def __init__(self, name, uid, start_date, end_date, options):
-        self.id = f"{uid}-{datetime.now().timestamp()}"
+    def __init__(self, id, name, uid, start_date, end_date, options):
+        self.id = id
         self.name = name
         self.uid = uid
         self.start_date = start_date

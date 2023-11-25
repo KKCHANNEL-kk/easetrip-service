@@ -102,20 +102,13 @@ class Schedule(BaseModel):
     days: List[ScheduleDay]
     options: Optional[Dict[Any, Any]] = {}
 
+class ScheduleOutput(Schedule):
+    uid: int
+    @classmethod
+    def from_orm(cls, schedule: Schedule):
+        data = schedule.__dict__
+        data['days'] = [ScheduleDay(**day) for day in data['days']]
+        return cls(**data)
 
-class ScheduleRefineAction(BaseModel):
-    op: str  # add, delete, update
-    day_index: int
-    block_index: int
-
-
-class ScheduleRefineActionAdd(ScheduleRefineAction):
-    block: ScheduleBlock
-
-
-class ScheduleRefineActionDelete(ScheduleRefineAction):
-    pass
-
-
-class ScheduleRefineActionUpdate(ScheduleRefineAction):
-    block: ScheduleBlock
+    class Config:
+        from_attributes = True

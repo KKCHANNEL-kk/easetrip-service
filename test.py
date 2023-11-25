@@ -1,52 +1,15 @@
-from model import Point as PointModel
-from db import AMZRDS
-from schema import Point
-from datetime import datetime
-import requests
-from googlemaps.directions import directions
-import googlemaps
-import os
-from dotenv import load_dotenv
-load_dotenv()
+import json
+def convert_json_in_text_to_dict(text):
+    # 去除{之前的多余内容，这条语句同时适用于{之前没有多余内容的情况
+    t = text[len(text.split('{')[0]):]
+    suffix_length = len(text.split('}')[-1])
+    # 去除}之后的多余内容, }之后没有多余内容时，则不用处理
+    if suffix_length:
+        t = t[:-suffix_length]
+    # 转换成字典返回
+    return json.loads(t)
 
+d = {}
 
-conn = next(AMZRDS().get_connection())
-
-GOOGLE_MAP_KEY: str = os.environ.get('GOOGLE_MAP_KEY', '')
-
-
-def get_client() -> googlemaps.Client:
-    if not GOOGLE_MAP_KEY:
-        raise Exception("GOOGLE_MAP_KEY not found")
-
-    return googlemaps.Client(key=GOOGLE_MAP_KEY)
-
-
-def compute_route(origin: Point, destination: Point):
-    gmaps = googlemaps.Client(key=GOOGLE_MAP_KEY)
-    # o = {
-    #     "lat": origin.latitude,
-    #     "lng": origin.longitude
-    # }
-    # d = {
-    #     "lat": destination.latitude,
-    #     "lng": destination.longitude
-    # }
-    o = origin.address
-    d = destination.address
-    print('o', o)
-    print('d', d)
-
-    res = directions(client=gmaps, origin=o, destination=d,
-                     mode="transit", departure_time=datetime.now())  # type: ignore
-    if res == []:
-        res = directions(client=gmaps, origin=o, destination=d,
-                         mode="walking", departure_time=datetime.now())
-    return res
-
-
-origin = conn.query(PointModel).filter(PointModel.id == 1).first()
-destination = conn.query(PointModel).filter(PointModel.id == 2).first()
-res = compute_route(origin, destination)
-
-print(res)
+print(convert_json_in_text_to_dict('{}'))
+print(d)

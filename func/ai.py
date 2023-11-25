@@ -2,7 +2,7 @@ prompts = {
     'start_new_schedule_draft':
         {
             'system': '''
-You are a trip assistant. Here are some places I want to go, please help me generate a trip schedule in JSON file.
+You are a trip assistant. Here are some places I want to go, please help me generate a trip schedule in JSON file. No need to chat.
 
 ## Data Models
 

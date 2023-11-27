@@ -45,10 +45,10 @@ def write_schedule_to_nosql(schedule: dict, uid: int = 1):
 # TODO: uid放 session 里获取
 def start_new_schedule_draft(
     uid: int = Body(1),
-    pids: list[int] = Body(...),
+    pids: list[int] = Body([]),
     options: dict[str, Any] = Body({}),
-    start: date = Body(...),
-    end: date = Body(...),
+    start: date = Body('2023-01-01'),
+    end: date = Body('2023-01-02'),
     city: str = Body(default="Beijing"),
 ) -> Schedule:
     mysql_conn = next(AMZRDS().get_connection())

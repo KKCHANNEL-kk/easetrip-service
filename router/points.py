@@ -51,9 +51,8 @@ def search_points(limit: Annotated[int, 'The maximum number of points to return.
     if city:
         query = query.filter(PointModel.city == city)
     if tag:
-        tag_json = json.dumps([tag])  # Convert the tag to a JSON array
-        query = query.filter(
-            text("JSON_CONTAINS(options->'$.tag', :tag)")).params(tag=tag_json)
+        # tag_json = json.dumps([tag])  # Convert the tag to a JSON array
+        query = query.filter(PointModel.options['tag'].contains(tag))
 
     points: List[PointModel] = query.limit(limit).offset(offset).all()
 

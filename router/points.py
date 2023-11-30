@@ -1,9 +1,8 @@
-from fastapi import HTTPException
-from fastapi import APIRouter, Query, Body
+from fastapi import APIRouter, Query, Body, Depends
 from typing import Any, List
 from typing_extensions import Annotated
-import json
 
+from sqlalchemy.orm import Session
 from sqlalchemy import text
 
 from schema import PointInput, PointOutput, LatLng
@@ -12,8 +11,6 @@ from db import AMZRDS, Mongo
 
 router = APIRouter(
     prefix="/points")
-
-conn = next(AMZRDS().get_connection())
 
 
 ALLOWED_CITIES = ['Shanghai', 'Beijing', 'Guangzhou']
@@ -41,7 +38,8 @@ GOOGLEMAPID_CITY = {
 def search_points(limit: Annotated[int, 'The maximum number of points to return.'] = 10,
                   offset: Annotated[int, 'The number of points to skip.'] = 0,
                   city: str = Query(None),
-                  tag: str = Query(None)
+                  tag: str = Query(None),
+                  conn: Session = Depends(AMZRDS().get_connection)
                   ) -> List[PointOutput]:
     # 兼容 Google Map ID 传值场景
     if city in GOOGLEMAPID_CITY:
@@ -62,7 +60,8 @@ def search_points(limit: Annotated[int, 'The maximum number of points to return.
 
 
 @router.get("/cart")
-def get_points_by_ids(p_ids: List[int] = Query(...)):
+def get_points_by_ids(p_ids: List[int] = Query(...),
+                      conn: Session = Depends(AMZRDS().get_connection)):
     """
     Retrieve a list of points by ID.
 
@@ -79,7 +78,7 @@ def get_points_by_ids(p_ids: List[int] = Query(...)):
 
 
 @router.get("/{p_id}")
-def get_point_by_id(p_id: int):
+def get_point_by_id(p_id: int, conn: Session = Depends(AMZRDS().get_connection)):
     """
     Retrieve a point by ID.
 

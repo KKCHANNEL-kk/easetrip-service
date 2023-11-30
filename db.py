@@ -54,7 +54,7 @@ class AMZRDS(DB):
         except Exception as e:
             print("Error connecting to MySQL DB:", e)
 
-    def get_connection(self) -> Generator[Session,None,None]:
+    def get_connection(self):
         SessionLocal = sessionmaker(
             autocommit=False, autoflush=False, bind=self.engine)
         conn: Session = SessionLocal()

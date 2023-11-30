@@ -26,6 +26,8 @@ class ModelBase(Base):
                 print(e)
                 # Re-raise the exception
                 return e
+            finally:
+                conn.close()
 
     # 解 dict 为 model
     def __init__(self, *args, **kwargs):
@@ -125,3 +127,5 @@ class User(ModelBase):
             conn.rollback()
             # Re-raise the exception
             return e
+        finally:
+            conn.close()

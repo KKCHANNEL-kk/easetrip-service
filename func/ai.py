@@ -8,9 +8,10 @@ You are a trip assistant. Here are some places I want to go, please help me gene
 
 **Point** : a place I want to go
 
+- id (int): The ID of the place
 - name (str): The name of the place
 - address (str): The full address of the place
-- latLng (object): An object containing latitude and longitude coordinates
+- latLng (object): An object containing latitudeitude and longitude coordinates
 
 **RouteStep** : a single step in the route between two points
 
@@ -22,8 +23,8 @@ You are a trip assistant. Here are some places I want to go, please help me gene
 
 **Route** : a complete route from origin to destination
 
-- origin (str): The starting point's name of the route
-- destination (str): The ending point of the route
+- origin (Point): The starting point's name of the route
+- destination (Point): The ending point of the route
 - steps (list[RouteStep]): An array of RouteStep objects representing each step in the route
 - duration (int): The total time in seconds
 - distance (int): The total distance in kilometers
@@ -31,7 +32,7 @@ You are a trip assistant. Here are some places I want to go, please help me gene
 **ScheduleBlock** : a block of time in the schedule for a specific activity
 
 - type (str): The type of activity ('point' or 'route')
-- point (str): The point where the activity takes place (if applicable)
+- point (Point): The point where the activity takes place (if applicable)
 - route (Route): The route taken to reach the point (if applicable)
 - start (datetime): The start time of the activity in HH:mm format
 - end (datetime): The end time of the activity in HH:mm format
@@ -58,27 +59,30 @@ You are a trip assistant. Here are some places I want to go, please help me gene
   "end": "2023-07-02",
   "points": [
     {
+      "id": 1,
       "name": "Star Ferry",
       "address": "Star Ferry Pier, Tsim Sha Tsui, Tsim Sha Tsui Promenade, Hong Kong",
       "latLng": {
-        "lat": 22.293764,
-        "lng": 114.168463
+        "latitude": 22.293764,
+        "longitude": 114.168463
       }
     },
     {
+      "id": 2,
       "name": "Victoria Harbour",
       "address": "Tsim Sha Tsui Promenade, Kowloon, Hong Kong",
       "latLng": {
-        "lat": 22.293528,
-        "lng": 114.171007
+        "latitude": 22.293528,
+        "longitude": 114.171007
       }
     },
     {
+      "id": 3,
       "name": "Lantau Island",
       "address": "Lantau Island, New Territories, Hong Kong",
       "latLng": {
-        "lat": 22.266498,
-        "lng": 113.941751
+        "latitude": 22.266498,
+        "longitude": 113.941751
       }
     }
   ]
@@ -88,62 +92,102 @@ You are a trip assistant. Here are some places I want to go, please help me gene
                     'content':
                     '''
 {
-    "start": "2023-07-01",
-    "end": "2023-07-02",
-    "days": [
+  "start": "2023-07-01",
+  "end": "2023-07-02",
+  "days": [
+    {
+      "day": "2023-07-01",
+      "blocks": [
         {
-            "day": "2023-07-01",
-            "blocks": [
-                {
-                    "type": "point",
-                    "point": "Star Ferry",
-                    "start": "10:00",
-                    "end": "11:00",
-                    "activity": "Take a ride on the Star Ferry and enjoy the view of Victoria Harbour"
-                },
-                {
-                    "type": "route",
-                    "route": {
-                        "origin": "Star Ferry",
-                        "destination": "Victoria Harbour",
-                        "steps": [
-                            {
-                                "start": "Star Ferry",
-                                "end": "Victoria Harbour",
-                                "step": "350 metres on foot",
-                                "distance": 350,
-                                "duration": 300
-                            }
-                        ],
-                        "duration": 300,
-                        "distance": 350
-                    },
-                    "start": "11:00",
-                    "end": "11:05",
-                    "activity": "Walk to Victoria Harbour"
-                },
-                {
-                    "type": "point",
-                    "point": "Victoria Harbour",
-                    "start": "11:05",
-                    "end": "13:00",
-                    "activity": "Explore Victoria Harbour and enjoy the skyline view"
-                }
-            ]
+          "type": "point",
+          "point": {
+            "id": 1,
+            "name": "Star Ferry",
+            "address": "Star Ferry Pier, Tsim Sha Tsui, Tsim Sha Tsui Promenade, Hong Kong",
+            "latLng": {
+              "latitude": 22.293764,
+              "longitude": 114.168463
+            }
+          },
+          "start": "10:00",
+          "end": "11:00",
+          "activity": "Take a ride on the Star Ferry and enjoy the view of Victoria Harbour"
         },
         {
-            "day": "2023-07-02",
-            "blocks": [
-                {
-                    "type": "point",
-                    "point": "Lantau Island",
-                    "start": "10:00",
-                    "end": "17:00",
-                    "activity": "Spend the day exploring Lantau Island, visit the Big Buddha and Po Lin Monastery"
-                }
-            ]
+          "type": "route",
+          "route": {
+            "origin": {
+              "id": 1,
+              "name": "Star Ferry",
+              "address": "Star Ferry Pier, Tsim Sha Tsui, Tsim Sha Tsui Promenade, Hong Kong",
+              "latLng": {
+                "latitude": 22.293764,
+                "longitude": 114.168463
+              }
+            },
+            "destination": {
+              "id": 2,
+              "name": "Victoria Harbour",
+              "address": "Tsim Sha Tsui Promenade, Kowloon, Hong Kong",
+              "latLng": {
+                "latitude": 22.293528,
+                "longitude": 114.171007
+              }
+            },
+            "steps": [
+              {
+                "start": "Star Ferry",
+                "end": "Victoria Harbour",
+                "step": "350 metres on foot",
+                "distance": 350,
+                "duration": 300
+              }
+            ],
+            "duration": 300,
+            "distance": 350
+          },
+          "start": "11:00",
+          "end": "11:05",
+          "activity": "Walk to Victoria Harbour"
+        },
+        {
+          "type": "point",
+          "point": {
+            "id": 2,
+            "name": "Victoria Harbour",
+            "address": "Tsim Sha Tsui Promenade, Kowloon, Hong Kong",
+            "latLng": {
+              "latitude": 22.293528,
+              "longitude": 114.171007
+            }
+          },
+          "start": "11:05",
+          "end": "13:00",
+          "activity": "Explore Victoria Harbour and enjoy the skyline view"
         }
-    ]
+      ]
+    },
+    {
+      "day": "2023-07-02",
+      "blocks": [
+        {
+          "type": "point",
+          "point": {
+            "id": 3,
+            "name": "Lantau Island",
+            "address": "Lantau Island, New Territories, Hong Kong",
+            "latLng": {
+              "latitude": 22.266498,
+              "longitude": 113.941751
+            }
+          },
+          "start": "10:00",
+          "end": "17:00",
+          "activity": "Spend the day exploring Lantau Island, visit the Big Buddha and Po Lin Monastery"
+        }
+      ]
+    }
+  ]
 }
 '''
                 }
@@ -164,7 +208,15 @@ You are a trip assistant. Here are some places I want to go, please help me gene
             "blocks": [
                 {
                     "type": "point",
-                    "point": "The Forbidden City",
+                    "point": {
+                        "id": 8,
+                        "name": "The Forbidden City",
+                        "latLng": {
+                            "latitude": 39.916344,
+                            "longitude": 116.397155
+                        },
+                        "address": "4 Jingshan Front St, Dongcheng, Beijing, China",
+                    },
                     "route": null,
                     "start": "10:00:00",
                     "end": "13:00:00",
@@ -174,7 +226,15 @@ You are a trip assistant. Here are some places I want to go, please help me gene
                     "type": "route",
                     "point": null,
                     "route": {
-                        "origin": "The Forbidden City",
+                        "origin": {
+                        "id": 8,
+                        "name": "The Forbidden City",
+                        "latLng": {
+                            "latitude": 39.916344,
+                            "longitude": 116.397155
+                        },
+                        "address": "4 Jingshan Front St, Dongcheng, Beijing, China",
+                    },
                         "destination": "The Great Wall of China",
                         "steps": [
                             {
@@ -208,7 +268,15 @@ You are a trip assistant. Here are some places I want to go, please help me gene
                 },
                 {
                     "type": "point",
-                    "point": "The Great Wall of China",
+                    "point": {
+                        "id": 9,
+                        "name": "The Great Wall of China",
+                        "latLng": {
+                            "latitude": 40.431908,
+                            "longitude": 116.570374
+                        },
+                        "address": "Huairou, Beijing, China"
+                    },
                     "route": null,
                     "start": "16:00:00",
                     "end": "18:00:00",
@@ -229,7 +297,15 @@ You are a trip assistant. Here are some places I want to go, please help me gene
             "blocks": [
                 {
                     "type": "point",
-                    "point": "The Great Wall of China",
+                    "point": {
+                        "id": 9,
+                        "name": "The Great Wall of China",
+                        "latLng": {
+                            "latitude": 40.431908,
+                            "longitude": 116.570374
+                        },
+                        "address": "Huairou, Beijing, China"
+                    },
                     "route": null,
                     "start": "10:00:00",
                     "end": "13:00:00",
@@ -281,7 +357,15 @@ You are a trip assistant. Here are some places I want to go, please help me gene
                 },
                 {
                     "type": "point",
-                    "point": "The Forbidden City",
+                    "point": {
+                        "id": 8,
+                        "name": "The Forbidden City",
+                        "latLng": {
+                            "latitude": 39.916344,
+                            "longitude": 116.397155
+                        },
+                        "address": "4 Jingshan Front St, Dongcheng, Beijing, China"
+                    },
                     "route": null,
                     "start": "21:00:00",
                     "end": "22:00:00",

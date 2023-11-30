@@ -48,6 +48,20 @@ class PointOutput(Point):
         del data['longitude']
         return cls(**data)
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'latLng': {'latitude': self.latLng.latitude, 'longitude': self.latLng.longitude},
+            'address': self.address,
+            'mapid': self.mapid,
+            'pic': self.pic,
+            'tag': self.tag,
+            'city': self.city,
+            'introduction': self.introduction,
+            'options': self.options,
+        }
+
     class Config:
         from_attributes = True
 
@@ -102,8 +116,10 @@ class Schedule(BaseModel):
     days: List[ScheduleDay]
     options: Optional[Dict[Any, Any]] = {}
 
+
 class ScheduleOutput(Schedule):
     uid: int
+
     @classmethod
     def from_orm(cls, schedule: Schedule):
         data = schedule.__dict__

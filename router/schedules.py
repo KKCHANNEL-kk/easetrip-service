@@ -12,7 +12,7 @@ from func.ai import prompts
 from db import AMZRDS, Mongo
 from pymongo.database import Database as MongoDatabase
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 
 import openai
@@ -41,7 +41,7 @@ def write_schedule_to_nosql(schedule: dict, uid: int = 1):
         GLOBAL_SCHEDULE_CACHE[uid] = schedule
     except Exception as e:
         print(
-            'Unable to update schedule {schedule["id"]}: {e}')
+            f'Unable to update schedule {schedule["id"]}: {e}')
 
 
 def unzip_schedule(schedule: dict):
@@ -52,19 +52,20 @@ def unzip_schedule(schedule: dict):
                 id = int(block['point']['id'])
                 point_db = mysql_conn.query(PointModel).filter(
                     PointModel.id == id).first()
-                block['point'] = PointOutput.from_orm(point_db)
+                block['point'] = PointOutput.from_orm(point_db).to_dict()
             elif block['type'] == "route":
                 if isinstance(block['route']['origin'], dict) and 'id' in block['route']['origin']:
                     origin_id = int(block['route']['origin']['id'])
                     origin_db = mysql_conn.query(PointModel).filter(
                         PointModel.id == origin_id).first()
-                    block['route']['origin'] = PointOutput.from_orm(origin_db)
+                    block['route']['origin'] = PointOutput.from_orm(
+                        origin_db).to_dict()
                 if isinstance(block['route']['destination'], dict) and 'id' in block['route']['destination']:
                     destination_id = int(block['route']['destination']['id'])
                     destination_db = mysql_conn.query(PointModel).filter(
                         PointModel.id == destination_id).first()
                     block['route']['destination'] = PointOutput.from_orm(
-                        destination_db)
+                        destination_db).to_dict()
     return schedule
 
 
@@ -104,6 +105,7 @@ def zip_schedule(schedule: dict):
                 }
     return schedule
 
+
 @router.post("/start")
 # TODO: uid放 session 里获取
 def start_new_schedule_draft(
@@ -140,7 +142,7 @@ def start_new_schedule_draft(
     })
 
     resp: ChatCompletion = openai.chat.completions.create(
-        model='gpt-35-turbo',
+        model='gpt-4',
         messages=[
             {
                 'role': 'system',
@@ -155,7 +157,7 @@ def start_new_schedule_draft(
         n=1,
         temperature=0,
         top_p=1,
-        response_format={'type': 'text'},
+        # response_format={'type': 'text'},
     )
     choice = resp.choices[0]
     content: str = choice.message.content or ""
@@ -166,7 +168,7 @@ def start_new_schedule_draft(
 
     res = unzip_schedule(res)
 
-    w = write_schedule_to_nosql(res)
+    w = write_schedule_to_nosql(res, uid)
 
     return res  # type: ignore
 
@@ -183,7 +185,7 @@ def refine_schedule(
     del draft['id']
     draft = zip_schedule(draft)
     resp: ChatCompletion = openai.chat.completions.create(
-        model='gpt-35-turbo',
+        model='gpt-4',
         messages=[
             {
                 'role': 'system',
@@ -199,7 +201,7 @@ def refine_schedule(
         n=1,
         temperature=0,
         top_p=1,
-        response_format={'type': 'text'},
+        # response_format={'type': 'text'},
     )
     choice = resp.choices[0]
     content: str = choice.message.content or '{}'
@@ -208,7 +210,7 @@ def refine_schedule(
         res = convert_json_in_text_to_dict(content)
         res['id'] = s_id
         res = unzip_schedule(res)
-        write_schedule_to_nosql(res)
+        write_schedule_to_nosql(res, uid)
         return res
     except Exception as e:
         print(e)
@@ -255,6 +257,7 @@ def get_user_schedule_history(uid: int) -> list[ScheduleOutput]:
 # @router.put("/update")
 # def update_schedule_by_id(id: str):
 #     return {}
+
 
 if __name__ == "__main__":
 

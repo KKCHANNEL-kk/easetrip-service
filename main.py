@@ -46,4 +46,4 @@ if __name__ == "__main__":
     model.ModelBase.metadata.create_all(bind=amzrds.engine)
     # test_script()
     uvicorn.run(app="main:app", host='0.0.0.0',
-                port=8000, log_level="info", reload=True)
+                port=8000, log_level="info", reload=True,timeout_keep_alive=60)
